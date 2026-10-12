@@ -17,7 +17,7 @@
 - [x] 仓库 main 上的脚本、工作流、相关文档可读取。
 - [ ] 当前目标 Commit 的 GitHub Actions 检查实际 PASS（才可称 CI_VERIFIED）。
 
-以上项目应按实际核验结果勾选，不得把工作流文件存在等同于 CI PASS。
+核验记录（2026-10-12）：本地 `bash scripts/ci/verify.sh` 通过（5 个回归测试）；已确认 main 中 11 个所需文件可读取，Git blob 与本地版本一致。当前仅缺少目标 Commit 的 GitHub Actions PASS 证据。不得把工作流文件存在等同于 CI PASS。
 
 ## 未来：应用功能验收（待定义）
 

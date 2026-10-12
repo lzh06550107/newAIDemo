@@ -9,7 +9,7 @@
 
 ## Current commit / 当前 Commit
 
-最近已确认的文档基线提交为 `9a3cb8933e329f13fe7f7449c859e8e13625bdf9`。本文件被修改即产生新 Commit，因此**当前 HEAD 必须实时从 GitHub 获取**，不能把此处的历史 SHA 当作最新状态。
+最近一次已核验的基础设施提交为 `86259245469434b5266764e143d50538b581a918`。本文件被修改即产生新 Commit，因此**当前 HEAD 必须实时从 GitHub 获取**，不能把此处的历史 SHA 当作最新状态。
 
 ## Current task / 当前任务
 
@@ -18,11 +18,10 @@
 ## Completed / 已完成事项
 
 - 已提交并核验上传的 AGENTS.md、README.md 及五份 docs/ai 事实源文档。
-- 文档基础设施脚本、回归测试和工作流已加入本阶段目标提交；对应的本地文件 SHA 与 GitHub 待提交 blob SHA 一致，提交后仍须核验 main。
+- 文档基础设施脚本、回归测试和工作流已加入本阶段目标提交；对应的本地文件 SHA 与 GitHub blob SHA 一致；已通过 GitHub API 检查 11 个文件在 main 可读取。
 
 ## Pending / 未完成事项
 
-- 核验新增代码与工作流在 main 上存在、可读取。
 - 查看当前 Commit 的 GitHub Actions 运行结果；尚不能预设 CI PASS。
 - 确认产品需求、应用平台及技术栈。
 - 实施应用源码、真实构建/功能测试、部署及目标环境验收。
@@ -33,7 +32,7 @@
 
 ## CI status / CI 状态
 
-文档专用 GitHub Actions 工作流在本次阶段配置；正式 CI 验证结果待 GitHub 运行记录确认。未获证据前不得标记 CI_VERIFIED。
+文档专用 GitHub Actions 工作流已提交到 main。GitHub Commit 状态接口返回空状态集合，现有 workflow 查询只覆盖 pull_request 触发，无法证明 push CI 的执行结论。正式 CI 结果：**未核实**；不能标记 CI_VERIFIED。
 
 ## Local verification / 本地验证
 
@@ -53,4 +52,4 @@
 
 ## Next step / 下一步
 
-确认文档验证在对应 GitHub Commit 上的 CI 结果；随后确定业务目标和应用技术栈，再扩充真正的应用测试及部署流程。
+通过 GitHub Actions 页面或可列出 push workflow runs 的接口核验目标 Commit 的 CI 结果；随后确定业务目标和应用技术栈，再扩充真正的应用测试及部署流程。
