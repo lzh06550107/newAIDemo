@@ -1,25 +1,24 @@
 # newAIDemo
 
-本仓库已建立 AI 协作与项目事实源文档基线，业务目标、技术栈和应用源码尚未确定。本 README 不代表应用已实现或已通过测试。
+本仓库目前处于 **AI 协作基础设施初始化阶段**。已提供项目事实源文档和文档专用自动验证；业务需求、应用技术栈与产品源码仍待确定。
 
-## 文档索引
+## 文档事实源
 
-- [AGENTS.md](AGENTS.md)：AI/开发协作最高规则。
-- [PROJECT.md](docs/ai/PROJECT.md)：项目架构与环境信息。
-- [STATE.md](docs/ai/STATE.md)：当前事实、任务与下一步。
-- [DECISIONS.md](docs/ai/DECISIONS.md)：已确认的关键决策。
-- [ACCEPTANCE.md](docs/ai/ACCEPTANCE.md)：验收条件。
-- [TESTING.md](docs/ai/TESTING.md)：测试分层与实际入口。
+- [AGENTS.md](AGENTS.md)：所有 Agent 必须遵守的规则。
+- [PROJECT.md](docs/ai/PROJECT.md)：项目定位、架构与技术选型状态。
+- [STATE.md](docs/ai/STATE.md)：当前任务与事实状态。
+- [DECISIONS.md](docs/ai/DECISIONS.md)：有效技术决策。
+- [ACCEPTANCE.md](docs/ai/ACCEPTANCE.md)：阶段验收标准。
+- [TESTING.md](docs/ai/TESTING.md)：真实可执行的测试入口及作用范围。
 
-## 当前状态（2026-10-12）
+## 目前可执行的验证
 
-目前只有文档基线，没有应用源码、构建入口、可运行测试或 GitHub Actions 工作流。项目类型和技术栈未确定。请先阅读 [STATE.md](docs/ai/STATE.md)，并实时核对 GitHub main 的 HEAD；以仓库实际状态而非本段静态文字为准。
+在具备 Bash 和 Python 3.10+ 的环境中：
 
-## 开始开发前
+```bash
+bash scripts/ci/verify.sh
+```
 
-1. 阅读 AGENTS.md 与 docs/ai 下五份文档。
-2. 核对实际 Branch / Commit、源码、scripts/ci 和 .github/workflows。
-3. 确定业务范围与技术栈，在 PROJECT.md 记录。
-4. 根据真实工程配置统一验证入口和 GitHub Actions；同步更新 TESTING.md、ACCEPTANCE.md 和 STATE.md。
+该入口执行文档结构/链接检查及检查器的回归测试；GitHub Actions 通过 [.github/workflows/ci.yml](.github/workflows/ci.yml) 调用相同入口。**这不是应用 lint、单测、构建、部署或真机/浏览器运行验收。**
 
-**注意**：本仓库尚无可执行的 `verify` 命令；不要把文档示例命令当作已存在的测试入口。
+首次进入或继续开发前，读取 AGENTS.md 和上述文档，核对 GitHub main HEAD。下一阶段在确认业务目标和技术栈后扩展验证入口。

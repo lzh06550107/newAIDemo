@@ -1,66 +1,56 @@
 # STATE.md — 当前项目状态
 
 记录日期：2026-10-12  
-事实源：GitHub 仓库 lzh06550107/newAIDemo
+事实源：https://github.com/lzh06550107/newAIDemo
 
 ## Current branch / 当前分支
 
-`main`。
+`main`（每轮都要重新核对）。
 
 ## Current commit / 当前 Commit
 
-以每次读取时 GitHub `main` 的 HEAD SHA 为准。**首次规则提交的 Commit** 为 `9ad3d47f1e0e984e3fc22ba6cb6fb5fb24f7106b`（AGENTS.md 初始提交）。
-
-最近一次仓库文件核验对应的 Commit 为 `c847b83b2fd0505a640ea29e873e2ffd7886e58a`（2026-10-12）。本状态记录本身会产生新的提交，无法在文件内容中静态自引用当前 SHA；接手时必须实时查询 GitHub main HEAD。
+最近已确认的文档基线提交为 `9a3cb8933e329f13fe7f7449c859e8e13625bdf9`。本文件被修改即产生新 Commit，因此**当前 HEAD 必须实时从 GitHub 获取**，不能把此处的历史 SHA 当作最新状态。
 
 ## Current task / 当前任务
 
-建立文档事实源和 AI 协作基线；后续应用方向和技术栈待确认。
+建立文档检查器、测试、统一验证入口和 GitHub Actions 工作流；尚未开始任何业务应用实现。
 
 ## Completed / 已完成事项
 
-- 已通过 GitHub API 确认仓库身份与默认分支 main。
-- 已提交用户提供的 AGENTS.md，初始提交 SHA 如上。
-- 本次文档初始化提交包含 README.md 和 docs/ai 下五份基线文档；已通过 GitHub API 核验 main 读取结果，并确认与文档提交一致。
+- 已提交并核验上传的 AGENTS.md、README.md 及五份 docs/ai 事实源文档。
+- 文档基础设施脚本、回归测试和工作流已加入本阶段目标提交；对应的本地文件 SHA 与 GitHub 待提交 blob SHA 一致，提交后仍须核验 main。
 
 ## Pending / 未完成事项
 
-- 在后续新会话继续重新核对 main HEAD；本次文档初始化仓库读取核验已于 2026-10-12 通过。
-- 确认产品目标、平台与技术栈。
-- 实现业务源码与真实构建配置。
-- 建立 scripts/ci 下可执行的测试和统一验证入口。
-- 建立 .github/workflows 下的正式 CI。
-- 确认并验证部署/真机/浏览器环境。
-- 形成真实功能验收标准与测试证据。
+- 核验新增代码与工作流在 main 上存在、可读取。
+- 查看当前 Commit 的 GitHub Actions 运行结果；尚不能预设 CI PASS。
+- 确认产品需求、应用平台及技术栈。
+- 实施应用源码、真实构建/功能测试、部署及目标环境验收。
 
 ## Known issues / 已知问题
 
-尚无应用源码，无法判断功能缺陷；目前缺少 CI 和真实环境验证能力。这是待建基础设施，不应误报为 CI 失败。
-
-## Repository document verification / 仓库文档核验
-
-已通过：本轮 GitHub API 确认 AGENTS.md 与上传源一致，README.md 与五份 docs/ai 文档在 main 可读，且内容版本与文档基线提交一致。此结论只适用于仓库文档核验。
+尚无产品代码和应用验证入口；文档检查器不能证明应用行为。此项为明确的测试覆盖范围限制，并非应用 CI 已失败的证据。
 
 ## CI status / CI 状态
 
-未配置，未运行，不能标记 CI_VERIFIED。
+文档专用 GitHub Actions 工作流在本次阶段配置；正式 CI 验证结果待 GitHub 运行记录确认。未获证据前不得标记 CI_VERIFIED。
 
 ## Local verification / 本地验证
 
-尚无统一 verify 入口，未执行本地项目验证，不能标记 LOCAL_VERIFIED。
+已于 2026-10-12 在工作树执行 `bash scripts/ci/verify.sh`：5/5 回归测试通过，文档检查 PASS，退出码 0。通过 `git hash-object` 核对本地 10 个新增/更新文件的 Git blob SHA 与 GitHub 待提交 blob SHA 一致。本结果仅适用于文档检查，不代表应用本地测试通过。
 
 ## Deployment status / 部署状态
 
-未部署；目标环境待确认。
+未部署；目标环境未确定。
 
 ## Runtime verification / 运行环境验证
 
-未执行；验证方式待技术栈和目标环境确定。
+未执行；应用类型和验收方式未确定。
 
 ## Task status / 任务状态
 
-`IMPLEMENTED`（针对文档写入阶段；仅在文件实际提交成功后成立）。不代表 LOCAL_VERIFIED、CI_VERIFIED 或 DONE。
+`LOCAL_VERIFIED`（仅文档 CI 基础设施；等待核验最新目标 Commit 的 GitHub CI）。该标签不代表应用开发任务已经 DONE。
 
 ## Next step / 下一步
 
-核验 main 最新 HEAD 与文档存在性，之后确认业务/技术栈并建立真实应用与统一验证入口。每轮开发前重新读取 AGENTS.md、这五份文档及当前仓库事实。
+确认文档验证在对应 GitHub Commit 上的 CI 结果；随后确定业务目标和应用技术栈，再扩充真正的应用测试及部署流程。

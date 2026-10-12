@@ -1,0 +1,24 @@
+name: Documentation baseline CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  documentation:
+    name: Verify documentation baseline
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python for documentation checks
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run shared documentation verification
+        run: bash scripts/ci/verify.sh
